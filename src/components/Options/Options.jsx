@@ -1,12 +1,24 @@
-const Options = ({ onUpdate, onReset, total }) =>{
-    return(
-        <>
-        <button onClick={() => onUpdate("good")}>Good</button>
-        <button onClick={() => onUpdate("neutral")}>Neutral</button>
-        <button onClick={() => onUpdate("bad")}>Bad</button>
-        {total > 0 && (<button onClick={onReset}>Reset</button>)}
-        </>
-    );
+import css from "./Options.module.css";
+
+const Options = ({ feedback, onUpdate, onReset, total }) => {
+  return (
+    <>
+      {Object.keys(feedback).map((elem) => (
+        <button
+          className={css.button}
+          onClick={() => onUpdate(elem)}
+          key={elem}
+        >
+          {elem}
+        </button>
+      ))}
+      {total > 0 && (
+        <button className={css.button} onClick={onReset}>
+          Reset
+        </button>
+      )}
+    </>
+  );
 };
 
 export default Options;
