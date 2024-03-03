@@ -44,12 +44,14 @@ const App = () => {
         onReset={resetFeedback}
         total={totalFeedback}
       />
-      <Feedback
-        good={feedback.good}
-        neutral={feedback.neutral}
-        bad={feedback.bad}
-        positive={positiveReviews}
-      />
+      {totalFeedback > 0 && (
+        <Feedback
+          good={feedback.good}
+          neutral={feedback.neutral}
+          bad={feedback.bad}
+          positive={positiveReviews}
+        />
+      )}
       <Notification total={totalFeedback} />
     </>
   );
